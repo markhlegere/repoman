@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Merchant Integration Training</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/merchant.css" />
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visa Checkout" />
+    <meta name="author" content="Mark Legere" />
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+<body id="merchant-body">
+<div id="merchant-container">
+<div id="goal">
+    <h3 class="goal-header">Server Integration</h3>
+</div>
+<div id="merch-container">
+<div id="steps" class="float-left">
+
+    <div id="step1" class="step" data-step="1">
+        <div class="step-header">
+            <div class="step-header-text float-left">
+               Roughly 20 Lines of PHP code on the merchant's or partner's server is all it takes to integrate
+            </div>
+            <div class="step-menu">
+                <ul class="step-ul float-right">
+                    <li class="step-li"><a title="Learn" target="_blank" class="step-info step-ico"></a></li>
+                    <li class="step-li"><a title="See" target="_blank" class="step-code step-ico"></a></li>
+                    <li class="step-li"><a title="Try" target="_blank" class="step-edit step-ico"></a></li>
+                    <li class="step-li"><a title="Check" target="_blank" class="step-checkit step-ico"></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="step-body">
+
+            <div class="show-container  step-container">
+                <div id="show-editor-1" class="show-editor" data-code-type="html">&lt;?php
+    /****  Decryption Functions - Consult Documentation or Integration Resources for most current Sample Code ****/
+    function decryptPayload($key, $wrappedKey, $payload) {
+        $unwrappedKey = decrypt($key, $wrappedKey);
+        return decrypt($unwrappedKey, $payload);
+    }
+    function decrypt($key, $data) {
+        $decodedData = base64_decode($data);
+        $hmac = substr($decodedData, 0, 32);
+        $iv = substr($decodedData, 32, 16);
+        $data = substr($decodedData, 48);
+        if ($hmac != hmac($key, $iv . $data)) {
+            $hmac_error = 'HMAC VALIDATION ERROR:' . 'key is: '. $key . 'iv is:' . $iv . 'hmac is:' . $hmac . 'data is:' . $data;
+        }
+        return openssl_decrypt($data, 'aes-256-cbc', hashKey($key), OPENSSL_RAW_DATA, $iv);
+    }
+    function hashKey($data) {
+        $hasher = hash_init('sha256');
+        hash_update($hasher, $data);
+        return hash_final($hasher, true);
+    }
+    function hmac($key, $data) {
+        return hash_hmac('sha256', $data, $key, true);
+    }
+    $apikey = '0ZBLEV7DEHVP76I9KP7G13M6s2c2RioRoeoIaTnC2HZnVVk_Y';
+    $secret = 'igAq2tHVNkTzvitpo$wKP8A}tvqKumw}Jb80VC2M';
+
+    /****  YOUR CODE BEGINS HERE!!  Everything above this line can be cut and paste from Visa Checkout Docs!     ****/
+    $call_id = $_POST['callId'];
+    $enc_key = $_POST['enckey'];
+    $enc_purchase_data = $_POST['purchaseData'];
+    $decrypted_payload = decryptPayload($secret, $enc_key, $enc_purchase_data);
+    $openssl_error = openssl_error_string();
+    $current_timestamp = time();
+    $full_path = 'https://sandbox.secure.checkout.visa.com/wallet-services-web/payment/updatepaymentinfo.gif';
+    $resource_path = 'payment/updatepaymentinfo.gif';
+    $query_string = 'apikey=' . $apikey . '&callId=' . $call_id;
+    $pre_hash = $secret . $current_timestamp . $resource_path . $query_string;
+    $pre_hash = utf8_encode($pre_hash);
+    $hash = hash('sha256', $pre_hash);
+    $x_pay_token = 'x:' . $current_timestamp . ':' . $hash;
+    $confirmation_url = $full_path . '?' . 'token=' . $x_pay_token . '&' . $query_string;
+    $params = array();
+    $params['purchaseData'] = $decrypted_payload;
+    $params['confirm_url'] =$confirmation_url;
+    ksort($params);
+    $body = json_encode($params);
+    header('Content-type: application/json');
+    echo $body;
+    exit;
+?&gt;</div>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+
+    <div id="cart" class="float-right">
+        <table><tr>
+            <td class="summary-block">
+                <table class="desc-block">
+                    <tr class="summary-header"><td colspan="2" class="center">Summary</td></tr>
+                    <tr class="line"><td class="label">&nbsp;</td></tr>
+                    <tr class="summary-detail"><td class="left">Subtotal</td><td class="right txt">$275.47</td></tr>
+                    <tr class="summary-detail"><td class="left">Tax</td><td class="right txt">$10.22</td></tr>
+                    <tr class="summary-detail"><td class="left">Total</td><td class="right txt">$285.69</td></tr>
+                    <tr class="summary-detail"><td class="left"><input class="promo" type="text" size="12" placeholder="Promo Code" /></td>
+                    <tr class="line"><td class="label">&nbsp;</td></tr>
+                    <tr class="buttons">
+                        <td class="center" colspan="2">
+                            <table>
+                                <!-- tr class="buttons"><td><button alt="Pay with Visa Checkout" id="v-create" class="xv-button" role="button">Create Account</button></td></tr -->
+                                <tr class="buttons"><td colspan="2" class="center"><button id="store">Store Checkout</button></td></tr>
+                                <tr class="buttons"><td colspan="2" class="center"> OR </td></tr>
+                                <tr class="buttons"><td colspan="2" class="center"><img title="Pay with Visa Checkout" alt="Pay with Visa Checkout" id="v-checkout" class="xv-button" role="button" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?style=color&size=213"></td></tr>
+                            </table>
+                        </td>
+                    </tr>
+                    <tr class="buttons"><td >&nbsp;</td></tr>
+                    <tr class="buttons"><td >&nbsp;</td></tr>
+                    <tr class="buttons"><td >&nbsp;</td></tr>
+                    <tr class="buttons"><td  class="left">&nbsp;</td></tr>
+                    <tr class="buttons"><td  class="left">&nbsp;</td></tr>
+                </table>
+            </td>
+        </tr></table>
+
+    </div>
+</div>
+</div>
+
+<div id="code-form" title="Code">
+
+    <div id="btn-relocate"></div>
+
+    <div id="editors">
+        <div id="code-header"></div>
+        <div id="show" class="code-editor">
+            <div id="show-editor-popup" class="show-editor" data-code-type="php">&lt;script src='https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js'&gt;&lt;/script&gt;</div>
+        </div>
+        <div id="real" class="code-editor">
+            <div id="real-editor-popup" class="real-editor" data-code-type="php">&lt;script src='https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js'&gt;&lt;/script&gt;</div>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="js/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<!-- script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script-->
+
+<script src="js/demo.js"></script>
+<script src="js/server.js"></script>
+<script src="js/ux.js"></script>
+
+
+
+
+</body>
+</html>
+

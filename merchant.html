@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Merchant Integration Training</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/merchant.css" />
+    <!--[if IE]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Visa Checkout" />
+    <meta name="author" content="Mark Legere" />
+    <link rel="shortcut icon" href="images/favicon.ico">
+</head>
+<body id="merchant-body">
+<div id="merchant-container">
+        <div id="goal">
+            <h3 class="goal-header">Simple Integration</h3>
+        </div>
+        <div id="merch-container">
+            <div id="steps" class="float-left">
+
+                <div id="step1" class="step" data-step="1">
+                    <div class="step-header">
+                        <div class="step-header-text float-left">
+                            <span class="step-header-number">1&nbsp;</span>Add Visa Checkout SDK
+                        </div>
+                        <div class="step-menu">
+                            <ul class="step-ul float-right">
+                                <li class="step-li"><a title="Learn" target="_blank" class="step-info step-ico"></a></li>
+                                <li class="step-li"><a title="See" target="_blank" class="step-code step-ico"></a></li>
+                                <li class="step-li"><a title="Try" target="_blank" class="step-edit step-ico"></a></li>
+                                <li class="step-li"><a title="Check" target="_blank" class="step-checkit step-ico"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-text">
+                            <p>Add a simple &lt;script&gt; tag pointing to the Visa Checkout SDK. This code is free, so we cut and paste it for you!</p>
+                        </div>
+                        <div class="show-container  step-container">
+                            <div id="show-editor-1" class="show-editor" data-code-type="html">&lt;script src='https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js'&gt;&lt;/script&gt;</div>
+                        </div>
+                        <div class="real-container step-container">
+                            <div id="real-editor-1" class="real-editor" data-code-type="html">&lt;script src='https://sandbox-assets.secure.checkout.visa.com/checkout-widget/resources/js/integration/v1/sdk.js'&gt;&lt;/script&gt;</div>
+                        </div>
+                   </div>
+                </div>
+                <div id="step2" class="step" data-step="2">
+                    <div class="step-header">
+
+                        <div class="step-header-text">
+                            <span class="step-header-number">2&nbsp;</span>Add&nbsp;<img class="button-small" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?style=color&size=213">
+                        </div>
+                        <div class="step-menu">
+                            <ul class="step-ul">
+                                <li class="step-li"><a title="Learn" target="_blank" class="step-info step-ico"></a></li>
+                                <li class="step-li"><a title="See" target="_blank" class="step-code step-ico"></a></li>
+                                <li class="step-li"><a title="Try" target="_blank" class="step-edit step-ico"></a></li>
+                                <li class="step-li"><a title="Check" target="_blank" class="step-checkit step-ico"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-text">
+                            <p>Use a standard &lt;img&gt; tag classed with "v-button" pointing our Image. This code is free, so we cut and paste it for you!</p>
+                        </div>
+                        <div class="show-container  step-container">
+                            <div id="show-editor-2" class="show-editor" data-code-type="html">&lt;img alt="Pay with Visa Checkout" class="v-button" role="button"
+    src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?style=color$size=154"&gt;</div>
+                        </div>
+                        <div class="real-container step-container">
+                            <div id="real-editor-2" class="real-editor" data-code-type="html">&lt;img alt="Pay with Visa Checkout" class="v-button" role="button"
+                                src="https://sandbox.secure.checkout.visa.com/wallet-services-web/xo/button.png?style=color$size=154"&gt;</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="step3" class="step" data-step="3">
+                    <div class="step-header">
+
+                        <div class="step-header-text">
+                            <span class="step-header-number">3&nbsp;</span>Initialize the Order
+                        </div>
+
+                        <div class="step-menu">
+                            <ul class="step-ul">
+                                <li class="step-li"><a title="Learn" target="_blank" class="step-info step-ico"></a></li>
+                                <li class="step-li"><a title="See" target="_blank" class="step-code step-ico"></a></li>
+                                <li class="step-li"><a title="Try" target="_blank" class="step-edit step-ico"></a></li>
+                                <li class="step-li"><a title="Check" target="_blank" class="step-checkit step-ico"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-text">
+                            <p>To define the Payment Experience use the V.init Function.</p>
+                        </div>
+                        <div class="show-container  step-container">
+                            <div id="show-editor-3" class="show-editor" data-code-type="javascript">V.init({
+    apikey: "0ZBLEV7DEHVP76I9KP7G13M6s2c2RioRoeoIaTnC2HZnVVk_Y",
+    settings: {
+        logoUrl: "https://checkout.visa.com/img/visa-checkout/visa-checkout-logo.png"
+    },
+    review: {
+       message: "Put a custom Message HERE!"
+    },
+    paymentRequest: {
+        currencyCode: "USD",
+        total: "285.69",
+    }
+});</div>
+                        </div>
+                        <div class="real-container step-container">
+                            <div id="real-editor-3" class="real-editor" data-code-type="javascript">V.init({
+    apikey: "0ZBLEV7DEHVP76I9KP7G13M6s2c2RioRoeoIaTnC2HZnVVk_Y",
+    settings: {
+        logoUrl: "https://checkout.visa.com/img/visa-checkout/visa-checkout-logo.png"
+    },
+    review: {
+        message: "Put a custom Message HERE!"
+    },
+    paymentRequest: {
+        currencyCode: "USD",
+        total: "285.69",
+    }
+});</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="step4" class="step" data-step="4">
+                    <div class="step-header">
+
+                        <div class="step-header-text">
+                            <span class="step-header-number">4&nbsp;</span>Javascript Handlers
+                        </div>
+
+                        <div class="step-menu">
+                            <ul class="step-ul">
+                                <li class="step-li"><a title="Learn" target="_blank" class="step-info step-ico"></a></li>
+                                <li class="step-li"><a title="See" target="_blank" class="step-code step-ico"></a></li>
+                                <li class="step-li"><a title="Try" target="_blank" class="step-edit step-ico"></a></li>
+                                <li class="step-li"><a title="Check" target="_blank" class="step-checkit step-ico"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-text">
+                            <p>Define 3 javascript functions that tell Visa Checkout how to handle Success, Cancellation, or an Error.</p>
+                        </div>
+                        <div class="show-container  step-container">
+                            <div id="show-editor-4" class="show-editor" data-code-type="javascript">V.on("payment.success", function (visaCheckoutData) {
+    // Function to Show a Dialog of Return Data
+    callServerDecryption(visaCheckoutData);
+});
+V.on("payment.cancel", function (payment) {
+    alert("Order Cancellation");
+});
+V.on("payment.error", function (payment, error) {
+    alert("Error Occured");
+});</div>
+                        </div>
+                        <div class="real-container step-container">
+                            <div id="real-editor-4" class="real-editor" data-code-type="javascript">V.on("payment.success", function (visaCheckoutData) {
+    // On the following line, add code to callServerDecryption(visaCheckoutData);
+});
+    V.on("payment.cancel", function (payment) {
+    alert("Order Cancellation... Add Custom Message HERE");
+});
+    V.on("payment.error", function (payment, error) {
+    alert("Error Occured... Add Custom Message HERE");
+});</div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div id="step5" class="step" data-step="5">
+                    <div class="step-header">
+
+                        <div class="step-header-text">
+                            <span class="step-header-number">5&nbsp;</span>Pixel Confirmation your Order
+                        </div>
+
+                        <div class="step-menu">
+                            <ul class="step-ul">
+                                <li class="step-li"><a title="Learn" target="_blank" class="step-info step-ico"></a></li>
+                                <li class="step-li"><a title="See" target="_blank" class="step-code step-ico"></a></li>
+                                <li class="step-li"><a title="Try" target="_blank" class="step-edit step-ico"></a></li>
+                                <li class="step-li"><a title="Check" target="_blank" class="step-checkit step-ico"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step-body">
+                        <div class="step-text">
+                            <p>Finally, we want to tell Visa Checkout that the order has been confirmed.  This area will be covered in more detail, but for now we can code "dummy" variable names in the 2 ellipses fields.</p>
+                        </div>
+                        <div class="show-container  step-container">
+                            <div id="show-editor-5" class="show-editor" data-code-type="html">&lt;img alt="Confirm" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/payment/updatepaymentinfo.gif?token=ADD_A_VARIABLE&amp;apikey=0ZBLEV7DEHVP76I9KP7G13M6s2c2RioRoeoIaTnC2HZnVVk_Y&amp;callId=value&amp;total=ADD_A_VARIABLE&amp;currencyCode=USD"&gt;</div>
+                        </div>
+                        <div class="real-container step-container">
+                            <div id="real-editor-5" class="real-editor" data-code-type="html">//Wherever you see ADD_A_VARIABLE type a dummy variable name
+ &lt;img alt="Confirm" src="https://sandbox.secure.checkout.visa.com/wallet-services-web/payment/updatepaymentinfo.gif?token=ADD_A_VARIABLE&amp;apikey=0ZBLEV7DEHVP76I9KP7G13M6s2c2RioRoeoIaTnC2HZnVVk_Y&amp;callId=value&amp;total=ADD_A_VARIABLE&amp;currencyCode=USD"&gt;</div>
+                        </div>
+                    </div>
+                </div>
+                <div id="step6" class="step">
+                    <div class="step-header">
+                        <div class="step-header-text">
+                            <button class="code-button">Let's Code</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div id="cart" class="float-right">
+                <table><tr>
+                <td class="summary-block">
+                    <table class="desc-block">
+                        <tr class="summary-header"><td colspan="2" class="center">Summary</td></tr>
+                        <tr class="line"><td class="label">&nbsp;</td></tr>
+                        <tr class="summary-detail"><td class="left">Subtotal</td><td class="right txt">$275.47</td></tr>
+                        <tr class="summary-detail"><td class="left">Tax</td><td class="right txt">$10.22</td></tr>
+                        <tr class="summary-detail"><td class="left">Total</td><td class="right txt">$285.69</td></tr>
+                        <tr class="summary-detail"><td class="left"><input class="promo" type="text" size="12" placeholder="Promo Code" /></td>
+                        <tr class="line"><td class="label">&nbsp;</td></tr>
+
+                        <tr class="buttons">
+                            <td class="center" colspan="2">
+                                <table id="btns-table">
+                                    <!-- tr class="buttons"><td><button alt="Pay with Visa Checkout" id="v-create" class="xv-button" role="button">Create Account</button></td></tr -->
+                                    <tr class="buttons"><td colspan="2" class="center"><button id="store">Store Checkout</button></td></tr>
+                                </table>
+                            </td>
+                        </tr>
+                        <tr class="buttons"><td >&nbsp;</td></tr>
+                        <tr class="buttons"><td >&nbsp;</td></tr>
+                        <tr class="buttons"><td >&nbsp;</td></tr>
+                        <tr class="buttons"><td  class="left">&nbsp;</td></tr>
+                        <tr class="buttons"><td  class="left">&nbsp;</td></tr>
+                    </table>
+                </td>
+                </tr></table>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="code-form" title="Code to Activate Visa Checkout">
+        <div id="vco-nav">
+
+        </div>
+        <div id="carousel">
+
+        </div>
+    </div>
+
+
+
+
+    <script src="js/ace/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <!-- script src="//ajax.googleapis.com/ajax/libs/jquerymobile/1.4.2/jquery.mobile.min.js"></script-->
+
+    <script src="js/demo.js"></script>
+    <script src="js/merchant.js"></script>
+
+
+
+
+</body>
+</html>

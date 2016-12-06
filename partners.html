@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta content="utf-8" http-equiv="encoding">
+    <title>Visa Checkout Partner Training</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css" />
+    <link rel="stylesheet" type="text/css" href="css/partners.css" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Checkout Partner Training</title>
+</head>
+<body>
+    <div id="container">
+        <div class="pills">
+            <div id="referrer" class="pill left-end">
+                <p>Referrer</p>
+            </div>
+            <div id="reseller" class="pill right-end">
+                <p>Reseller</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="form">
+
+        <form action="#">
+            <div class="form-container">
+                <div class="line"><input type="text" name="key" id="key" value="" placeholder="API Key" ></div>
+                <div class="line"><input type="text" name="secret" id="secret" value="" placeholder="Secret" class="text ui-widget-content ui-corner-all"></div>
+                <div class="line"><input type="text" name="legal-name" id="legal-name" value="" placeholder="Legal Name" ></div>
+                <div class="line"><input type="url" name="url" id="url" value="" placeholder="URL" ></div>
+                <div class="line"><input type="text" name="trade-name" id="trade-name" value="" placeholder="Trade Name" ></div>
+                <div class="line"><input type="text" name="bid" id="bin" value="" placeholder="Business ID Number" ></div>
+                <div class="line"><input type="text" name="bid-type" id="bin-type" value="" placeholder="EIN, BN, or ABN" ></div>
+                <div class="line"><input type="text" name="addr1" id="addr1" value="" placeholder="Address" ></div>
+                <div class="line"><input type="text" name="addr2" id="addr2" value="" ></div>
+                <div class="line"><input type="text" name="city" id="city" value="" placeholder="City" ></div>
+                <div class="line"><input type="text" name="state" id="state" value="" placeholder="State or Province" ></div>
+                <div class="line"><input type="text" name="zip" id="zip" value="" placeholder="Postal" ></div>
+                <div class="line"><input type="text" name="country" id="country" value="" placeholder="Country" ></div>
+                <div class="line"><input type="text" name="first" id="first" value="" placeholder="Contact - First" ></div>
+                <div class="line"><input type="text" name="last" id="last" value="" placeholder="Contact - Last" ></div>
+                <div class="line"><input type="tel" name="phone" id="phone" value="" placeholder="Phone" ></div>
+                <div class="line"><input type="email" name="email" id="email" value="" placeholder="Email" ></div>
+                <div class="line"><input type="text" name="client-id" id="client-id" value="" placeholder="External Client ID" ></div>
+
+                <div class="line">
+                    <label for="create-key">Key?</label>
+                    <input type="checkbox" name="create-key" id="create-key" checked>
+                </div>
+                <div class="line">
+                    <label for="allow-pan">Pan?</label>
+                    <input type="checkbox" name="allow-pan" id="allow-pan" checked>
+                </div>
+                <div class="line">
+                    <label for="allow-portal">Portal?</label>
+                    <input type="checkbox" name="allow-portal" id="allow-portal" checked>
+                    <div class="pad">
+                </div>
+                <div class="line">
+                    <label for="accepted-msa">Accepted MSA?</label>
+                    <input type="checkbox" name="accepted-msa" id="accepted-msa" checked>
+                </div>
+
+                <div class="line">
+                    <input type="submit" name="btn-create" id="btn-create" value="Create" class="button">
+                </div>
+                <!-- Allow form submission with keyboard without duplicating the dialog button -->
+                <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
+            </div>
+        </form>
+
+    </div>
+
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="js/demo.js"></script>
+    <script src="js/partners.js"></script>
+
+</body>
+</html>
